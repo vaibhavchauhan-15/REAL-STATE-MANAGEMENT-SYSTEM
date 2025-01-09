@@ -28,12 +28,6 @@ The Real Estate Management Website is designed to streamline the process of mana
 
 ### 💬 Communication System
 - **Notifications:** Real-time notifications for new listings, inquiries, or property status updates.
-
-### 🛠 Administrative Features
-- **Manage Listings:** Admins can approve or reject user-submitted properties.
-- **User Moderation:** Monitor and ban fraudulent accounts.
-- **Content Management:** Update website content dynamically, including FAQs and blog posts.
-
 ---
 
 ## 💻 Technical Requirements
