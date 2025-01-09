@@ -27,18 +27,7 @@ The Real Estate Management Website is designed to streamline the process of mana
 - **Property Showcase:** Image galleries, virtual tours, and detailed neighborhood information.
 
 ### 💬 Communication System
-- **In-App Messaging:** Secure messaging between buyers, sellers, and agents.
 - **Notifications:** Real-time notifications for new listings, inquiries, or property status updates.
-
-### 💰 Transactions and Payments
-- **Payment Integration:** Integration with payment gateways to support credit/debit cards, net banking, and digital wallets.
-- **Rental Management:** Automatic rent collection and reminder system.
-- **Transaction History:** Users can view their past payments, invoices, and rental agreements.
-
-### 📊 Analytics and Reports
-- **User Insights:** Analyze buyer preferences and search patterns.
-- **Performance Metrics:** Track the performance of property listings.
-- **Market Trends:** Provide insights into property price trends and demand analysis.
 
 ### 🛠 Administrative Features
 - **Manage Listings:** Admins can approve or reject user-submitted properties.
@@ -130,7 +119,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 📞 Contact
 If you have any questions or feedback, feel free to contact:
-- **Email:** vaibhav@example.com
-- **LinkedIn:** [linkedin.com/in/vaibhavchauhan](#)
+- **Email:** vaibhavchauahn.contactme@gmail.com
+- **LinkedIn:** [[linkedin.com/in/vaibhavchauhan](https://www.linkedin.com/in/vaibhavchauhan15/)](#)
 
 
