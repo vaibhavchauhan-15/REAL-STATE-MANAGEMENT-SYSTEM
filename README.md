@@ -106,6 +106,10 @@ By leveraging the MERN stack, this real estate management website aims to increa
 ---
 
 ## 🤝 Contributors
+- Munna Das
+- Vikash Singh
+- Himanshu Shingh
+- Durgesh Nikam
 - Vaibhav Chauhan (Project Lead)
 
 Feel free to contribute by submitting issues or pull requests!
