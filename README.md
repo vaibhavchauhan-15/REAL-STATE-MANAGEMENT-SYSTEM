@@ -29,6 +29,128 @@ The Real Estate Management Website is designed to streamline the process of mana
 ### 💬 Communication System
 - **Notifications:** Real-time notifications for new listings, inquiries, or property status updates.
 ---
+# Real Estate Property Management System
+
+## CRUD Operations
+
+### **Create**
+Implement a form to allow users to add new property listings. The form should include the following details:
+- Property Name
+- Address
+- Description
+- Price
+- Type (Sale or Rent)
+- Number of Bedrooms
+- Number of Bathrooms
+- Property Images (Upload)
+
+**Functionality:**
+- Validate user inputs to ensure all required fields are filled.
+- Provide feedback to users if any data is missing or invalid.
+
+---
+
+### **Read**
+Display property listings on the homepage or a dedicated listings page. Each listing should display key information such as:
+- Property Name
+- Price
+- Address
+- Property Type (Sale/Rent)
+- Number of Bedrooms and Bathrooms
+
+**Functionality:**
+- Provide a link for each listing to view more details on a separate page.
+- Ensure that the listings are visually appealing and easy to navigate.
+
+---
+
+### **Update**
+Allow users to edit their own property listings.
+
+**Functionality:**
+- Implement an edit form that pre-fills the existing property details.
+- Validate the updated information to ensure consistency.
+- Provide feedback to the user after successful updates.
+
+---
+
+### **Delete**
+Provide an option for users to delete their property listings.
+
+**Functionality:**
+- Ask for confirmation before deleting a listing.
+- Remove the listing from the database upon confirmation.
+- Provide feedback to the user after successful deletion.
+
+---
+
+## Search and Filters
+Implement a search bar to allow users to search for properties based on:
+- Keywords (e.g., location)
+- Property Type (Sale or Rent)
+- Price Range
+
+**Filters:**
+- Number of Bedrooms
+- Number of Bathrooms
+- Property Type
+
+**Functionality:**
+- Display search results dynamically.
+- Allow users to refine their search using the filters.
+
+---
+
+## Image Upload
+Allow users to upload images for their property listings.
+
+**Functionality:**
+- Users can upload multiple images.
+- Display uploaded images in a gallery or carousel format on the property details page.
+
+---
+
+## User Dashboard
+Provide a user dashboard for managing property listings.
+
+**Dashboard Features:**
+- View all property listings added by the user.
+- Edit or delete property listings.
+- View favorite listings.
+- Edit user profile information.
+
+---
+
+## Responsive Design
+Ensure the website is responsive and user-friendly across various devices:
+- Desktop
+- Tablet
+- Mobile
+
+**Functionality:**
+- Use flexible layouts and media queries to adjust the website's appearance based on the device.
+
+---
+
+## Error Handling and Validation
+Implement thorough error handling and validation on both the server and client sides.
+
+**Functionality:**
+- Ensure all required fields are filled before submitting forms.
+- Provide user-friendly error messages.
+- Handle unexpected errors gracefully to improve the user experience.
+
+---
+
+## Pagination
+Implement pagination to manage large numbers of property listings.
+
+**Functionality:**
+- Load a limited number of listings per page.
+- Provide navigation to move between pages.
+- Improve page load times and overall user experience.
+
+---
 
 ## 💻 Technical Requirements
 
