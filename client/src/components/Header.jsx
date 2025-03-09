@@ -1,4 +1,4 @@
-import { FaSearch, FaBars, FaTimes } from "react-icons/fa";
+import { FaSearch, FaBars, FaTimes, FaHome, FaBuilding, FaInfoCircle, FaUserCircle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -41,28 +41,32 @@ const Header = () => {
   }, []);
 
   return (
-    <header className={`bg-black text-white sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'py-2 shadow-lg' : 'py-4'}`}>
+    <header className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'py-2 bg-black/90 backdrop-blur-md' : 'py-4 bg-black'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center no-underline group">
-          <h1 className="text-2xl font-bold">
+          <h1 className="text-2xl font-bold flex items-center">
             <span className="text-white group-hover:text-gray-200 transition-colors">Dream</span>
             <span className="text-yellow-500 group-hover:text-yellow-400 transition-colors">Heaven</span>
+            <span className="ml-1 h-2 w-2 bg-yellow-500 rounded-full animate-pulse-subtle hidden sm:block"></span>
           </h1>
         </Link>
 
         {/* Navigation - Desktop */}
         <div className="hidden md:flex items-center space-x-8">
-          <Link to="/" className="text-white hover:text-yellow-400 transition no-underline font-medium relative group">
-            Home
+          <Link to="/" className="text-white hover:text-yellow-400 transition no-underline font-medium relative group flex items-center">
+            <FaHome className="mr-2 text-yellow-500 group-hover:scale-110 transition-transform" />
+            <span>Home</span>
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-500 transition-all duration-300 group-hover:w-full"></span>
           </Link>
-          <Link to="/search" className="text-white hover:text-yellow-400 transition no-underline font-medium relative group">
-            Properties
+          <Link to="/search" className="text-white hover:text-yellow-400 transition no-underline font-medium relative group flex items-center">
+            <FaBuilding className="mr-2 text-yellow-500 group-hover:scale-110 transition-transform" />
+            <span>Properties</span>
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-500 transition-all duration-300 group-hover:w-full"></span>
           </Link>
-          <Link to="/about" className="text-white hover:text-yellow-400 transition no-underline font-medium relative group">
-            About
+          <Link to="/about" className="text-white hover:text-yellow-400 transition no-underline font-medium relative group flex items-center">
+            <FaInfoCircle className="mr-2 text-yellow-500 group-hover:scale-110 transition-transform" />
+            <span>About</span>
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-500 transition-all duration-300 group-hover:w-full"></span>
           </Link>
         </div>
@@ -70,16 +74,16 @@ const Header = () => {
         {/* Search Bar - Desktop */}
         <form 
           onSubmit={handleSubmit} 
-          className="hidden md:flex items-center bg-white rounded-full overflow-hidden border-2 border-gray-300 focus-within:border-yellow-500 px-4 py-2 w-72 transition-all duration-300 focus-within:shadow-md"
+          className="hidden md:flex items-center bg-white/10 backdrop-blur-sm rounded-full overflow-hidden border border-gray-700 focus-within:border-yellow-500 px-4 py-2 w-72 transition-all duration-300 focus-within:shadow-md focus-within:bg-white/20"
         >
           <input
             type="text"
             placeholder="Search properties..."
-            className="flex-grow outline-none text-black text-sm bg-transparent"
+            className="flex-grow outline-none text-white text-sm bg-transparent placeholder-gray-400"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <button className="text-black hover:text-yellow-500 transition ml-2 animate-pulse-subtle">
+          <button className="text-white hover:text-yellow-500 transition ml-2 animate-pulse-subtle">
             <FaSearch />
           </button>
         </form>
@@ -91,7 +95,7 @@ const Header = () => {
               <div className="hidden sm:block mr-3 text-sm font-medium text-white">
                 {currentUser.username}
               </div>
-              <div className="h-10 w-10 rounded-full overflow-hidden border-2 border-yellow-500 transition-transform hover:scale-105 duration-300">
+              <div className="h-10 w-10 rounded-full overflow-hidden border-2 border-yellow-500 transition-transform hover:scale-105 duration-300 shadow-md">
                 <img
                   src={currentUser.avatar}
                   alt="Profile"
@@ -100,8 +104,9 @@ const Header = () => {
               </div>
             </Link>
           ) : (
-            <Link to="/sign-in" className="bg-yellow-500 hover:bg-yellow-600 text-black font-medium py-2 px-4 rounded-full transition duration-300 no-underline hover:shadow-lg transform hover:-translate-y-1">
-              Sign In
+            <Link to="/sign-in" className="btn-primary flex items-center">
+              <FaUserCircle className="mr-2" />
+              <span>Sign In</span>
             </Link>
           )}
           
@@ -120,31 +125,31 @@ const Header = () => {
       </div>
       
       {/* Mobile Menu */}
-      <div className={`md:hidden transition-all duration-300 overflow-hidden ${mobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
-        <div className="px-4 py-2 space-y-3 bg-gray-900">
+      <div className={`md:hidden transition-all duration-500 overflow-hidden ${mobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+        <div className="px-4 py-2 space-y-3 bg-gray-900 glass-effect-dark">
           <Link 
             to="/" 
-            className="block text-white hover:text-yellow-400 py-2 no-underline font-medium animate-slide-right"
+            className="block text-white hover:text-yellow-400 py-2 no-underline font-medium animate-slide-right flex items-center"
             style={{ animationDelay: '0.1s' }}
             onClick={() => setMobileMenuOpen(false)}
           >
-            Home
+            <FaHome className="mr-3 text-yellow-500" /> Home
           </Link>
           <Link 
             to="/search" 
-            className="block text-white hover:text-yellow-400 py-2 no-underline font-medium animate-slide-right"
+            className="block text-white hover:text-yellow-400 py-2 no-underline font-medium animate-slide-right flex items-center"
             style={{ animationDelay: '0.2s' }}
             onClick={() => setMobileMenuOpen(false)}
           >
-            Properties
+            <FaBuilding className="mr-3 text-yellow-500" /> Properties
           </Link>
           <Link 
             to="/about" 
-            className="block text-white hover:text-yellow-400 py-2 no-underline font-medium animate-slide-right"
+            className="block text-white hover:text-yellow-400 py-2 no-underline font-medium animate-slide-right flex items-center"
             style={{ animationDelay: '0.3s' }}
             onClick={() => setMobileMenuOpen(false)}
           >
-            About
+            <FaInfoCircle className="mr-3 text-yellow-500" /> About
           </Link>
         </div>
       </div>
@@ -153,16 +158,16 @@ const Header = () => {
       <div className={`md:hidden px-4 pb-4 transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : 'opacity-100'}`}>
         <form 
           onSubmit={handleSubmit} 
-          className="flex items-center bg-white rounded-full overflow-hidden border-2 border-gray-300 px-4 py-2 focus-within:border-yellow-500 transition-all duration-300"
+          className="flex items-center bg-white/10 backdrop-blur-sm rounded-full overflow-hidden border border-gray-700 px-4 py-2 focus-within:border-yellow-500 transition-all duration-300"
         >
           <input
             type="text"
             placeholder="Search properties..."
-            className="flex-grow outline-none text-black text-sm bg-transparent"
+            className="flex-grow outline-none text-white text-sm bg-transparent placeholder-gray-400"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <button className="text-black hover:text-yellow-500 transition ml-2">
+          <button className="text-white hover:text-yellow-500 transition ml-2">
             <FaSearch />
           </button>
         </form>

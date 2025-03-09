@@ -74,6 +74,25 @@ a {
   animation: bounceSlight 2s infinite;
 }
 
+/* New animations */
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 0.6s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s ease-out forwards;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
 /* Animation keyframes */
 @keyframes fadeIn {
   from { opacity: 0; }
@@ -122,6 +141,26 @@ a {
   50% { transform: translateY(-5px); }
 }
 
+@keyframes fadeInUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeInDown {
+  from { transform: translateY(-30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
 /* Transition utilities */
 .transition-all-300 {
   transition: all 0.3s ease;
@@ -150,6 +189,48 @@ a {
 
 .hover-scale:hover {
   transform: scale(1.05);
+}
+
+/* Glass effect */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-effect-dark {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.15);
+}
+
+/* Button styles */
+.btn-primary {
+  @apply bg-yellow-500 text-black font-medium py-2 px-6 rounded-lg transition-all duration-300;
+}
+
+.btn-primary:hover {
+  @apply bg-yellow-600 transform -translate-y-1 shadow-lg;
+}
+
+.btn-secondary {
+  @apply bg-transparent border-2 border-white text-white font-medium py-2 px-6 rounded-lg transition-all duration-300;
+}
+
+.btn-secondary:hover {
+  @apply bg-white/10 transform -translate-y-1;
 }
 
 /* Smooth transitions */

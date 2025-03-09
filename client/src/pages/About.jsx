@@ -99,7 +99,7 @@ export default function About() {
             
             <div className="bg-white p-6 rounded-lg shadow-lg text-center border border-gray-200 hover:border-yellow-500 transition duration-300">
               <div className="h-40 w-40 rounded-full bg-gray-200 mx-auto mb-4 border-4 border-yellow-500"></div>
-              <h3 className="text-xl font-semibold mb-1">Vikash Singh</h3>
+              <h3 className="text-xl font-semibold mb-1">Vikash Thakur</h3>
               <p className="text-yellow-600 mb-3 font-medium">Developer</p>
               <p className="text-gray-500 text-sm">Specializing in frontend development and UI/UX design from Mumbai.</p>
             </div>
