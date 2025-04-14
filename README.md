@@ -242,4 +242,109 @@ If you have any questions or feedback, feel free to contact:
 - **Email:** vaibhavchauahn.contactme@gmail.com
 - **LinkedIn:** [[linkedin.com/in/vaibhavchauhan](https://www.linkedin.com/in/vaibhavchauhan15/)](#)
 
+# Real Estate Management System
+
+A full-stack real estate management system built with React, Express, Node.js, and MongoDB.
+
+## Features
+
+- User authentication and authorization
+- Property listings management
+- Search and filter properties
+- User profiles and saved properties
+
+## Setup and Installation
+
+### Prerequisites
+
+- Node.js (v14+)
+- MongoDB
+- npm or yarn
+
+### Installation
+
+1. Clone the repository
+```bash
+git clone https://github.com/yourusername/real-estate-management-system.git
+cd real-estate-management-system
+```
+
+2. Install dependencies
+```bash
+npm run install-all
+```
+
+3. Configure environment variables
+   - Create `.env` file in the api directory based on `.env.example`
+   - Update MongoDB connection URI
+   - Set JWT secret key
+
+4. Start development environment
+```bash
+npm run dev
+```
+
+## Deployment
+
+### Option 1: Manual Deployment
+
+1. Build the client application
+```bash
+npm run build
+```
+
+2. Start the production server
+```bash
+npm start
+```
+
+### Option 2: Using Deployment Script
+
+```bash
+npm run deploy
+```
+
+### Deploying to Cloud Platforms
+
+#### Heroku
+
+1. Create a Heroku account and install Heroku CLI
+2. Login to Heroku
+```bash
+heroku login
+```
+
+3. Create a new Heroku app
+```bash
+heroku create your-app-name
+```
+
+4. Set environment variables
+```bash
+heroku config:set MONGO=your_mongodb_uri
+heroku config:set JWT_SECRET=your_jwt_secret
+heroku config:set NODE_ENV=production
+```
+
+5. Push to Heroku
+```bash
+git push heroku main
+```
+
+#### Render, Railway, or other platforms
+
+1. Connect your GitHub repository to the platform
+2. Configure build settings:
+   - Build command: `npm run build`
+   - Start command: `npm start`
+3. Set environment variables (same as above)
+
+## Production Considerations
+
+- Use a production MongoDB instance
+- Set proper JWT secret
+- Configure CORS settings if needed
+- Set up proper error logging
+- Consider using a process manager like PM2
+
 

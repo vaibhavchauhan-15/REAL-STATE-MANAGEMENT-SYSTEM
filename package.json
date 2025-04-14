@@ -1,0 +1,33 @@
+{
+  "name": "real-estate-management-system",
+  "version": "1.0.0",
+  "description": "Real Estate Management System with React, Express and MongoDB",
+  "type": "module",
+  "main": "deploy.js",
+  "scripts": {
+    "install-client": "cd client && npm install",
+    "install-api": "cd api && npm install",
+    "install-all": "npm run install-client && npm run install-api",
+    "client": "cd client && npm run dev",
+    "server": "cd api && npm run dev",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "build": "cd client && npm run build",
+    "start": "cd api && npm start",
+    "deploy": "node deploy.js"
+  },
+  "keywords": [
+    "real-estate",
+    "react",
+    "express",
+    "mongodb",
+    "mern"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.5.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

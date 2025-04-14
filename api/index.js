@@ -10,7 +10,12 @@ import path from "path";
 // Load environment variables
 config();
 
+// Use environment variables
+const PORT = process.env.PORT || 3000;
+const NODE_ENV = process.env.NODE_ENV || 'development';
+
 console.log("MongoDB URI:", process.env.MONGO);
+console.log("Environment:", NODE_ENV);
 
 // Use a local MongoDB connection string
 const MONGO_URI = process.env.MONGO || "mongodb://localhost:27017/realEstateDB";
@@ -32,19 +37,26 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
 
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/listing", listingRouter);
 
-app.use(express.static(path.join(__dirname, "/client/dist")));
+// Serve static files in production
+if (NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, "/client/dist")));
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
-});
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
+  });
+} else {
+  app.get('/', (req, res) => {
+    res.send('API is running...');
+  });
+}
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
