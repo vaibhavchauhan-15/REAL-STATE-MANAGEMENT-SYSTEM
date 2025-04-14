@@ -306,6 +306,37 @@ npm run deploy
 
 ### Deploying to Cloud Platforms
 
+#### Vercel (Recommended)
+
+1. Create a Vercel account and install Vercel CLI
+```bash
+npm install -g vercel
+```
+
+2. Login to Vercel
+```bash
+vercel login
+```
+
+3. Deploy to Vercel
+```bash
+vercel
+```
+
+4. For production deployment
+```bash
+vercel --prod
+```
+
+To configure environment variables:
+- Go to the Vercel dashboard
+- Select your project
+- Go to Settings > Environment Variables
+- Add the following variables:
+  - `MONGO`: Your MongoDB connection string
+  - `JWT_SECRET`: Your JWT secret key
+  - `NODE_ENV`: Set to `production`
+
 #### Heroku
 
 1. Create a Heroku account and install Heroku CLI

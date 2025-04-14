@@ -13,9 +13,11 @@ config();
 // Use environment variables
 const PORT = process.env.PORT || 3000;
 const NODE_ENV = process.env.NODE_ENV || 'development';
+const isVercel = process.env.VERCEL || false;
 
 console.log("MongoDB URI:", process.env.MONGO);
 console.log("Environment:", NODE_ENV);
+console.log("Is Vercel:", isVercel);
 
 // Use a local MongoDB connection string
 const MONGO_URI = process.env.MONGO || "mongodb://localhost:27017/realEstateDB";
@@ -37,20 +39,26 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+// Only start the server if not on Vercel (Vercel uses serverless functions)
+if (!isVercel) {
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+}
 
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/listing", listingRouter);
 
 // Serve static files in production
-if (NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, "/client/dist")));
+if (NODE_ENV === 'production' || isVercel) {
+  // Define correct static folder path based on environment
+  const staticPath = isVercel ? path.join(__dirname, "client/dist") : path.join(__dirname, "/client/dist");
+  app.use(express.static(staticPath));
 
   app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
+    const indexPath = isVercel ? path.join(__dirname, "client/dist/index.html") : path.join(__dirname, "client", "dist", "index.html");
+    res.sendFile(indexPath);
   });
 } else {
   app.get('/', (req, res) => {
@@ -67,3 +75,6 @@ app.use((err, req, res, next) => {
     message,
   });
 });
+
+// Export app for Vercel serverless function
+export default app;
