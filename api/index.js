@@ -6,6 +6,7 @@ import authRouter from "./routes/auth.route.js";
 import cookieParser from "cookie-parser";
 import listingRouter from "./routes/listing.route.js";
 import path from "path";
+import { fileURLToPath } from 'url';
 
 // Load environment variables
 config();
@@ -13,7 +14,7 @@ config();
 // Use environment variables
 const PORT = process.env.PORT || 3000;
 const NODE_ENV = process.env.NODE_ENV || 'development';
-const isVercel = process.env.VERCEL || false;
+const isVercel = process.env.VERCEL === '1';
 
 console.log("MongoDB URI:", process.env.MONGO);
 console.log("Environment:", NODE_ENV);
@@ -33,32 +34,44 @@ mongoose
     console.log("Running in development mode without MongoDB connection");
   });
 
-const __dirname = path.resolve();
+// Handle __dirname in ES module
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const rootDir = path.resolve(__dirname, '..');
 
 const app = express();
+
+// Middleware
 app.use(express.json());
 app.use(cookieParser());
 
-// Only start the server if not on Vercel (Vercel uses serverless functions)
+// API routes
+app.use("/api/user", userRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/listing", listingRouter);
+
+// Health check route for Vercel
+app.get('/api/health', (req, res) => {
+  res.status(200).json({ status: 'OK', environment: NODE_ENV });
+});
+
+// Only start the server if not on Vercel
 if (!isVercel) {
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
   });
 }
 
-app.use("/api/user", userRouter);
-app.use("/api/auth", authRouter);
-app.use("/api/listing", listingRouter);
-
-// Serve static files in production
+// Handle client routes in production/Vercel
 if (NODE_ENV === 'production' || isVercel) {
-  // Define correct static folder path based on environment
-  const staticPath = isVercel ? path.join(__dirname, "client/dist") : path.join(__dirname, "/client/dist");
-  app.use(express.static(staticPath));
-
-  app.get("*", (req, res) => {
-    const indexPath = isVercel ? path.join(__dirname, "client/dist/index.html") : path.join(__dirname, "client", "dist", "index.html");
-    res.sendFile(indexPath);
+  const clientPath = path.join(rootDir, 'client', 'dist');
+  
+  // Serve static files
+  app.use(express.static(clientPath));
+  
+  // For any other routes, serve the index.html
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(clientPath, 'index.html'));
   });
 } else {
   app.get('/', (req, res) => {
@@ -66,6 +79,7 @@ if (NODE_ENV === 'production' || isVercel) {
   });
 }
 
+// Error handling middleware
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
   const message = err.message || "Internal Server Error";

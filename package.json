@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Real Estate Management System with React, Express and MongoDB",
   "type": "module",
-  "main": "deploy.js",
+  "main": "api/index.js",
   "scripts": {
     "install-client": "cd client && npm install",
     "install-api": "cd api && npm install",
@@ -14,7 +14,10 @@
     "build": "npm run install-client && cd client && npm run build",
     "start": "cd api && npm start",
     "deploy": "node deploy.js",
-    "vercel-build": "npm run install-client && cd client && npm run build"
+    "vercel-build": "node vercel-build.js"
+  },
+  "engines": {
+    "node": ">=18.x"
   },
   "keywords": [
     "real-estate",
